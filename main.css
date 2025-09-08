@@ -1,0 +1,246 @@
+/*
+CSS Reset
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+Styles
+*/
+:root {
+  font-size: 10px;
+  --neon-title-color: #f40;
+  --neon-subtitle-color: #08f;
+  --neon-border-color: #08f;
+  --neon-line-color: #f40;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  font-family: "Tilt Neon", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: url('static/wall.jpg') center center / cover no-repeat;
+  height: 100vh;
+  width: 100vw;
+  overflow:hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 1));
+  z-index: 0;
+}
+
+.wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.tagline {
+  margin-top: 10rem;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.box {
+  padding: 4rem 6rem 5.5rem;
+  border: 0.4rem solid #fff;
+  border-radius: 3rem;
+  animation: flicker-box 1.5s infinite alternate;
+  position: relative;
+  min-width: 40vw;
+  min-height: 15vh;
+  box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff,
+    0 0 2rem var(--neon-border-color), inset 0 0 2rem var(--neon-border-color),
+    0 0 4rem var(--neon-border-color), inset 0 0 4rem var(--neon-border-color);
+}
+
+.title {
+	  font-size: 12rem;
+  font-style: italic;
+  color: #fff;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  width: auto;
+  white-space: nowrap;
+  padding: 0 5vw;
+  text-shadow: -0.2rem -0.2rem 1rem #fff, 0.2rem 0.2rem 1rem #fff,
+    0 0 2rem var(--neon-title-color), 0 0 4rem var(--neon-title-color),
+    0 0 6rem var(--neon-title-color), 0 0 8rem var(--neon-title-color),
+    0 0 10rem var(--neon-title-color);
+}
+
+.subtitle {
+ font-size: 11rem;
+  font-style: italic;
+  color: #fff;
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  
+  position: absolute;
+  right: -5%;
+  bottom: -5%;
+}
+
+.pretitle {
+	font-size: 3rem;
+  font-style: italic;
+  color: #fff;
+  position: absolute;
+  left: 5%;
+  top: 5%;
+}
+
+.subtitle, .pretitle{
+    text-shadow: -0.2rem -0.2rem 1rem #fff, 0.2rem 0.2rem 1rem #fff,
+    0 0 2rem var(--neon-subtitle-color), 0 0 4rem var(--neon-subtitle-color),
+    0 0 6rem var(--neon-subtitle-color), 0 0 8rem var(--neon-subtitle-color),
+    0 0 10rem var(--neon-subtitle-color);
+}
+
+/* Animate neon flicker */
+@keyframes flicker-box {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff,
+      0 0 2rem var(--neon-border-color), inset 0 0 2rem var(--neon-border-color),
+      0 0 4rem var(--neon-border-color), inset 0 0 4rem var(--neon-border-color);
+  }
+
+  20%,
+  24%,
+  55% {
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .box {
+	min-height: 10vh;
+	min-width: 30vw;
+  }
+  .title {
+	font-size: 7rem;
+  }
+  .subtitle {
+	font-size: 8rem;
+  }
+  .pretitle {
+	font-size: 3rem;
+  }
+}
+@media (max-width: 768px) {
+	.box {
+	min-height: 5vh;
+  }
+  .title {
+	font-size: 6rem;
+  }
+  .subtitle {
+	font-size: 7rem;
+  }
+  .pretitle {
+	font-size: 2rem;
+  }
+}
+@media (max-width: 600px) {
+  .box {
+	min-height: 5vh;
+  }
+    .title {
+	font-size: 5rem;
+  }
+  .subtitle {
+	font-size: 6rem;
+  }
+  .pretitle {
+	font-size: 2rem;
+  }
+}
+@media (max-width: 480px) {
+  .box {
+	min-height: 1vh;
+  }
+  .title {
+	top:35%;
+	font-size: 4rem;
+  }
+  .subtitle {
+	font-size: 5rem;
+  }
+  .pretitle {
+	font-size: 1.5rem;
+	left: 10%;
+	top: 5%;
+	}
+  }
+}
